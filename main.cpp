@@ -1,6 +1,9 @@
 // Author: Julio Herrera
 #include <iostream>
 #include <string>
+#include <tuple>
+#include <vector>
+#include <set>
 #include "headers/lexer.h"
 #include "headers/nfa.h"
 
@@ -41,5 +44,6 @@ int main() {
     cout << "Postfix: " << postfix << endl;
     // Convierte la expresion postfix a NFA
     NFA nfa = postfix_to_nfa(postfix);
+    print_table(nfa.getTransitions());
     return 0;
 }

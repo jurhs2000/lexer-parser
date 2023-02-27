@@ -55,12 +55,12 @@ string shunting_yard(deque<char> tokens) {
 }
 
 string infix_to_postfix(string infix) {
-    // convert the infix to a deque of tokens
+    // convierte la expresion infix a un deque de tokens
     deque<char> tokens;
     for(int i = 0; i < infix.length(); i++) {
         tokens.push_back(infix[i]);
     }
-    // convert the deque of tokens to postfix
+    // convierte la expresion infix a postfix
     string postfix = shunting_yard(tokens);
     return postfix;
 }
