@@ -1,12 +1,12 @@
 // Author: Julio Herrera
 #include <iostream>
 #include <string>
-#include "lexer.h"
-#include "nfa.h"
+#include "headers/lexer.h"
+#include "headers/nfa.h"
 
 using namespace std;
 
-int main() {
+/*int main() {
     // Recibe la expresion infix
     cout << "Ingresa una expresion infix: ";
     string infix;
@@ -27,5 +27,19 @@ int main() {
     } else {
         cout << "La cadena no es valida." << endl;
     }
+    return 0;
+}
+*/
+
+int main() {
+    // Recibe la expresion infix
+    cout << "Ingresa una expresion infix: ";
+    string infix;
+    cin >> infix;
+    // Convierte la expresion infix a postfix
+    string postfix = infix_to_postfix(infix);
+    cout << "Postfix: " << postfix << endl;
+    // Convierte la expresion postfix a NFA
+    NFA nfa = postfix_to_nfa(postfix);
     return 0;
 }

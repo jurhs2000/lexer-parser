@@ -1,6 +1,6 @@
 // Author: Julio Herrera
 #include <iostream>
-#include "../lexer.h"
+#include "../headers/lexer.h"
 #include <string>
 using namespace std;
 
