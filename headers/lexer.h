@@ -27,17 +27,17 @@ class Token {
     private:
         TokenType type;
         string value;
-        Token *next;
-        Token *prev;
+        /*Token *next;
+        Token *prev;*/
     public:
         void setType(TokenType type);
         TokenType getType();
         void setValue(string value);
         string getValue();
-        void setNext(Token *next);
+        /*void setNext(Token *next);
         Token *getNext();
         void setPrev(Token *prev);
-        Token *getPrev();
+        Token *getPrev();*/
 };
 
 Token *tokenize(string expression, int pos);

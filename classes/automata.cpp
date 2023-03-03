@@ -36,15 +36,22 @@ set<char> FiniteAutomata::getSymbols() {
 }
 
 /*
+    Definicion de la funcion setTransition
+*/
+void FiniteAutomata::setTransition(string state, string symbol, set<string> newStates) {
+    transitions.push_back(make_tuple(state, symbol, newStates));
+}
+
+/*
     Definicion de la funcion setTransitions
 */
-void FiniteAutomata::setTransitions(vector<tuple<char, char, set<char>>> transitions) {
+void FiniteAutomata::setTransitions(vector<tuple<string, string, set<string>>> transitions) {
     this->transitions = transitions;
 }
 
 /*
     Definicion de la funcion getTransitions
 */
-vector<tuple<char, char, set<char>>> FiniteAutomata::getTransitions() {
+vector<tuple<string, string, set<string>>> FiniteAutomata::getTransitions() {
     return transitions;
 }

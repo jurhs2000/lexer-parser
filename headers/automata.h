@@ -23,7 +23,7 @@ class FiniteAutomata
         // simbolos de entrada
         set<char> alphabet;
         // funciones de trancision para cada estado y simbolo para retornar un nuevo conjunto de estados
-        vector<tuple<char, char, set<char>>> transitions;
+        vector<tuple<string, string, set<string>>> transitions;
         // estado inicial
         char initialState;
         // estados de aceptacion
@@ -34,8 +34,9 @@ class FiniteAutomata
         void setSymbol(char state);
         set<char> getSymbols();
         //set<char> getAlphabet();
-        void setTransitions(vector<tuple<char, char, set<char>>> transitions);
-        vector<tuple<char, char, set<char>>> getTransitions();
+        void setTransition(string state, string symbol, set<string> newStates);
+        void setTransitions(vector<tuple<string, string, set<string>>> transitions);
+        vector<tuple<string, string, set<string>>> getTransitions();
         //char getInitialState();
         //set<char> getFinalStates();
 };

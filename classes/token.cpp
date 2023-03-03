@@ -24,7 +24,7 @@ string Token::getValue() {
     return value;
 }
 
-void Token::setNext(Token *next) {
+/*void Token::setNext(Token *next) {
     this->next = next;
 }
 
@@ -38,7 +38,7 @@ void Token::setPrev(Token *prev) {
 
 Token *Token::getPrev() {
     return prev;
-}
+}*/
 
 Token *tokenize(string expression, int pos) {
     Token *token = new Token();
@@ -53,7 +53,7 @@ Token *tokenize(string expression, int pos) {
         token->setType(SYMBOL);
     }
     token->setValue(string(1, c));
-    if (pos == 0) {
+    /*if (pos == 0) {
         token->setPrev(NULL);
         if (pos + 1 < expression.length()) {
             token->setNext(tokenize(expression, pos + 1));
@@ -72,6 +72,6 @@ Token *tokenize(string expression, int pos) {
     if (pos > 0 && pos < expression.length() - 1) {
         token->setPrev(tokenize(expression, pos - 1));
         token->setNext(tokenize(expression, pos + 1));
-    }
+    }*/
     return token;
 }

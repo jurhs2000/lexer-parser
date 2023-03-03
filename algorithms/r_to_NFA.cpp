@@ -1,7 +1,9 @@
 #include <deque>
 #include <iostream>
+#include <string>
 #include <set>
 #include "../headers/nfa.h"
+#include "../headers/lexer.h"
 
 using namespace std;
 
@@ -22,6 +24,13 @@ void add_symbols(NFA &nfa, string postfix) {
     }
 }
 
+void nfa_or(NFA nfa, deque<Token> tokens, int pos, deque<Token> symbols_stack) {
+    Token a = symbols_stack.back();
+    symbols_stack.pop_back();
+    Token b = symbols_stack.back();
+    symbols_stack.pop_back();
+}
+
 /*
     Obtiene una expresion postfix, setea los estados y retorna la NFA.
     Utiliza el simbolo 'ε' para representar el estado vacio.
@@ -29,11 +38,33 @@ void add_symbols(NFA &nfa, string postfix) {
 NFA postfix_to_nfa(string postfix) {
     NFA nfa = NFA();
     // convierte la expresion postfix a un deque de tokens
-    deque<char> tokens;
+    deque<Token> tokens;
     for(int i = 0; i < postfix.length(); i++) {
-        tokens.push_back(postfix[i]);
+        Token* token = new Token();
+        token = tokenize(postfix, i);
+        tokens.push_back(*token);
     }
     // añade los simbolos a la nfa
     add_symbols(nfa, postfix);
+    deque<Token> symbols_stack;
+    int count = 0;
+    set<string> newStates = {to_string(count + 1)};
+    // va leyendo las operaciones
+    for (int i = 0; i < tokens.size(); i++) {
+        Token token = tokens[i];
+        switch (token.getType()) {
+            case SYMBOL:
+                symbols_stack.push_back(token);
+                nfa.setTransition(to_string(count), token.getValue(), newStates);
+                break;
+            case OPERATOR:
+                switch (token.getValue()[0]) {
+                    case '|':
+                        nfa_or(nfa, tokens, i, symbols_stack);
+                        break;
+                }
+                break;
+        }
+    }
     return nfa;
 }
