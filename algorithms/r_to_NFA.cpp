@@ -35,13 +35,5 @@ NFA postfix_to_nfa(string postfix) {
     }
     // añade los simbolos a la nfa
     add_symbols(nfa, postfix);
-    // setea los estados del automata
-    for (int i = 0; i < tokens.size(); i++) {
-        char token = tokens[i];
-        switch (token) {
-            case '*':
-
-        }
-    }
     return nfa;
 }

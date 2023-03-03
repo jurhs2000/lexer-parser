@@ -44,6 +44,6 @@ int main() {
     cout << "Postfix: " << postfix << endl;
     // Convierte la expresion postfix a NFA
     NFA nfa = postfix_to_nfa(postfix);
-    print_table(nfa.getTransitions());
+    //print_table(nfa.getTransitions());
     return 0;
 }
